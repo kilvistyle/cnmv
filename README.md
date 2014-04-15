@@ -21,3 +21,7 @@ GAEデフォルトのDataViewerよりも便利な機能を搭載しています�
 
 CNMVデモページ
 <http://cnmv-demo.appspot.com/>
+
+
+ライセンス
+MIT License
