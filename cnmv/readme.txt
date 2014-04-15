@@ -1,5 +1,5 @@
 ----------------------------------
- CNMV - slim3 model viewwer -
+ CNMV - slim3 model viewer -
  version : 1.0.13
 
  kilvistyle@gmail.com
