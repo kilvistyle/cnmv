@@ -1,4 +1,4 @@
-CNMV - slim3 model viewwer -
+CNMV - slim3 model viewer -
 ---
 
 slim3で作成したGoogleAppengine for Javaプロジェクト用のシンプルなデータビューアです。
