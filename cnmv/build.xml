@@ -1,0 +1,49 @@
+<project name="cnmv" default="create-lib" basedir=".">
+
+	<property file="build.properties" />
+	
+    <path id="project.classpath">
+        <pathelement path="war/WEB-INF/classes" />
+	    <fileset dir="lib">
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
+
+	<target name="create-lib" depends="clean">
+	    <jar jarfile="target/cnmv_${ver}.jar" basedir="war/WEB-INF/classes"/>
+	    <jar jarfile="target/cnmv_${ver}_src.jar" basedir="src"/>
+	</target>
+
+    <target name="clean">
+        <delete dir="target" failonerror="false"/>
+        <mkdir dir="target"/>
+    </target>
+	
+    <target name="javadoc">
+        <javadoc access="protected" author="true" classpathref="project.classpath" destdir="javadoc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" source="1.6" sourcepath="src/main/java" splitindex="true" use="true" version="true">
+            <link href="http://code.google.com/appengine/docs/java/javadoc/" />
+            <link href="http://google-web-toolkit.googlecode.com/svn/javadoc/1.6/" />
+            <link href="http://java.sun.com/javaee/5/docs/api/"/>
+            <link href="http://java.sun.com/javase/6/docs/api/"/>
+            <link href="http://junit.org/junit/javadoc/4.5/"/>
+        </javadoc>
+    </target>
+	
+	<target name="copyJavadoc">
+		<copy todir="javadoc">
+			<fileset dir="target/site/apidocs">
+			</fileset>
+	    </copy>
+    </target>
+	
+	<target name="create-zip" depends="create-lib">
+		<zip destfile="target/cnmv_${ver}.zip">
+            <zipfileset dir="." includes="readme.txt"/>
+			<zipfileset dir="src" includes="cnapp.properties" prefix="src"/>
+            <zipfileset dir="target" includes="*.jar" prefix="target"/>
+            <zipfileset dir="war/cn" prefix="war/cn"/>
+            <zipfileset dir="war/WEB-INF" includes="web.xml" prefix="war/WEB-INF"/>
+		</zip>
+	</target>
+	
+</project>
